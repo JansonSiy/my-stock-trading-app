@@ -4,12 +4,14 @@
 <table>
   <th>
     <tr>
+      <td>id no.</td>
       <td>email</td>
     </tr>
   </th>
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= user.email %></td>
       </tr>
     <% end %>
