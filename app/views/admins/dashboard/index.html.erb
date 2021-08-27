@@ -13,6 +13,10 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.email %></td>
+        <td><%= user.approved %></td>
+        <td><%= link_to "pending", admins_approved_path(user), method: :patch %></td>
+        <%# method: :patch = def update
+        methid: :destroy = def destroy %>
       </tr>
     <% end %>
   </tbody>
