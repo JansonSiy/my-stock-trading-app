@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+         # if role left blank, it will not accept
+         validates :role, presence: true
+  
   def active_for_authentication?
     super && approved?
   end
@@ -12,5 +14,5 @@ class User < ApplicationRecord
   def inactive_message 
     approved? ? super : :not_approved
   end
-  # opposite of the above
+  
 end
