@@ -3,6 +3,7 @@
 # sample: use "resources :welcome" to generate url link
 
 Rails.application.routes.draw do
+  resources :stocks
   get 'welcome/index'
   devise_for :users, path: 'users', controllers: {
     sessions: 'users/sessions',
