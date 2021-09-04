@@ -7,8 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.destroy_all
-Admin.create(id: 1, email: "admin@email.com", password: "adminadmin")
+Admin.create(email: "admin@email.com", password: "adminadmin")
 
 User.destroy_all
-User.create(id: 1, email: "jansonsiy@email.com", password: "jansonsiy", approved: true, role: "Buyer", credit: 100)
-User.create(id: 2, email: "emcieestudillo@email.com", password: "emcieestudillo", approved: false, role: "Broker", credit: 200)
+User.create(email: "jansonsiy@email.com", password: "jansonsiy", approved: true, role: "Buyer", credit: 100)
+User.create(email: "emcieestudillo@email.com", password: "emcieestudillo", approved: false, role: "Broker", credit: 200)
+
+Stock.destroy_all
+client = Stock.iex
+# same as the below
+# client = IEX::Api::Client.new(
+#   publishable_token: 'pk_1e6046c067f94660afa2f03aa72d47f1',
+#   endpoint: 'https://cloud.iexapis.com/v1'
+# )
+msft_stock_price = client.quote('MSFT').latest_price
+Stock.create(name: 'MSFT', price: msft_stock_price)
+
+fb_stock_price = client.quote('FB').latest_price
+Stock.create(name: 'FB', price: fb_stock_price)
+
+twtr_stock_price = client.quote('TWTR').latest_price
+Stock.create(name: 'TWTR', price: twtr_stock_price)
