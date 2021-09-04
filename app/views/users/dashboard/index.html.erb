@@ -1,14 +1,20 @@
 <h1>Users::Dashboard#index</h1>
 <p>Find me in app/views/users/dashboard/index.html.erb</p>
 
-<div>Stock Price: <%= @msft_stock %></div>
-<div>CEO: <%= @msft_ceo %></div>
-<div>Company: <%= @msft_name %></div>
-<br>
-<div>Stock Price: <%= @fb_stock %></div>
-<div>CEO: <%= @fb_ceo %></div>
-<div>Company: <%= @fb_name %></div>
-<br>
-<div>Stock Price: <%= @twtr_stock %></div>
-<div>CEO: <%= @twtr_ceo %></div>
-<div>Company: <%= @twtr_name %></div>
+<h1>Stocks</h1>
+<table>
+  <th>
+    <tr>
+      <td>Name</td>
+      <td>Price</td>
+    </tr>
+  </th>
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.name %></td>
+        <td><%= stock.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
