@@ -7,6 +7,9 @@
     <tr>
       <td>Name</td>
       <td>Price</td>
+      <td>Quantity</td>
+      <td></td>
+      <td></td>
     </tr>
   </th>
   <tbody>
@@ -14,6 +17,9 @@
       <tr>
         <td><%= stock.name %></td>
         <td><%= stock.price %></td>
+        <td><%= stock.quantity %></td>
+        <td><%= link_to 'buy', users_buy_path(stock) %></td>
+        <td><%= link_to 'sell', users_sell_path(stock) %></td>
       </tr>
     <% end %>
   </tbody>

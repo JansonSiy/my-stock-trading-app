@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     authenticated :user do
       namespace :users do
         get 'dashboard/index', as: :authenticated_root
+        get 'dashboard/:id/buy', to:'dashboard#buy', as: :buy
+        get 'dashboard/:id/sell', to:'dashboard#sell', as: :sell
+        post 'dashboard/:id/buy_transaction', to:'dashboard#buy_transaction', as: :buy_transaction
       end
     end
   end

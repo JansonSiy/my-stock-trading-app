@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :transactions, dependent: :destroy
+  has_many :stocks, through: :transactions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

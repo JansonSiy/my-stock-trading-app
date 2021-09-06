@@ -10,8 +10,8 @@ Admin.destroy_all
 Admin.create(email: "admin@email.com", password: "adminadmin")
 
 User.destroy_all
-User.create(email: "jansonsiy@email.com", password: "jansonsiy", approved: true, role: "Buyer", credit: 100)
-User.create(email: "emcieestudillo@email.com", password: "emcieestudillo", approved: false, role: "Broker", credit: 200)
+User.create(id: 1, email: "jansonsiy@email.com", password: "jansonsiy", approved: true, role: "Buyer", credit: 100)
+User.create(id: 2, email: "nikkagoot@email.com", password: "nikkagoot", approved: false, role: "Broker", credit: 200)
 
 Stock.destroy_all
 @client = Stock.iex
@@ -21,10 +21,10 @@ Stock.destroy_all
 #   endpoint: 'https://cloud.iexapis.com/v1'
 # )
 msft_stock_price = @client.quote('MSFT').latest_price
-Stock.create(name: 'MSFT', price: msft_stock_price)
+Stock.create(name: 'MSFT', price: msft_stock_price, quantity: 1000)
 
 fb_stock_price = @client.quote('FB').latest_price
-Stock.create(name: 'FB', price: fb_stock_price)
+Stock.create(name: 'FB', price: fb_stock_price, quantity: 1000)
 
 twtr_stock_price = @client.quote('TWTR').latest_price
-Stock.create(name: 'TWTR', price: twtr_stock_price)
+Stock.create(name: 'TWTR', price: twtr_stock_price, quantity: 1000)

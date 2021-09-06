@@ -1,4 +1,7 @@
 class Stock < ApplicationRecord
+  has_many :transactions, dependent: :destroy
+  has_many :users, through: :transactions
+  
 # you can access Stock.iex in the controller
   def self.iex
     client = IEX::Api::Client.new(

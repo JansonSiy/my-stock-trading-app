@@ -1,0 +1,12 @@
+<h1>Buy <%= @stock.name %> Stocks</h1>
+
+<%= form_for("buy_transaction", url: "/users/dashboard/#{params[:id]}/buy_transaction", method: "post") do |f| %>
+    <div class="field">
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
