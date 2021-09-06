@@ -40,6 +40,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
+        <td><%= transaction.stock_name %></td>
         <td><%= transaction.price %></td>
         <td><%= transaction.quantity %></td>
       </tr>

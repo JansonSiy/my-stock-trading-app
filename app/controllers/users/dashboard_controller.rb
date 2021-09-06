@@ -28,12 +28,17 @@ class Users::DashboardController < ApplicationController
     Transaction.create(
       user_id: current_user.id,
       stock_id: params[:id],
+      stock_name: @stock.name,
       buy: true,
       sell: true,
       price: @stock.price,
       quantity: params[:buy_transaction][:quantity]
       #[:name of form],[:field quantity]
     )
+
+
+
+    
 
     # working
     # @user = current_user
