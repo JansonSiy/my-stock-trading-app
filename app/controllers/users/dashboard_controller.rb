@@ -35,11 +35,7 @@ class Users::DashboardController < ApplicationController
       quantity: params[:buy_transaction][:quantity]
       #[:name of form],[:field quantity]
     )
-
-
-
     
-
     # working
     # @user = current_user
     # @user.credit -= @stock.price
