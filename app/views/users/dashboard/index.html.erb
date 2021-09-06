@@ -1,7 +1,10 @@
 <h1>Users::Dashboard#index</h1>
 <p>Find me in app/views/users/dashboard/index.html.erb</p>
 
-<h1>Stocks</h1>
+<h2>User: <%= current_user.email %></h2>
+<h2>Credit: <%= current_user.credit %></h2>
+
+<h1>Stock List</h1>
 <table>
   <th>
     <tr>
@@ -20,6 +23,25 @@
         <td><%= stock.quantity %></td>
         <td><%= link_to 'buy', users_buy_path(stock) %></td>
         <td><%= link_to 'sell', users_sell_path(stock) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Your Stocks</h1>
+<table>
+  <th>
+    <tr>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Quantity</td>
+    </tr>
+  </th>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.price %></td>
+        <td><%= transaction.quantity %></td>
       </tr>
     <% end %>
   </tbody>
