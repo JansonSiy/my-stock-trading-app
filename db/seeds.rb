@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.destroy_all
-Admin.create(email: "admin@email.com", password: "adminadmin")
+Admin.create(id: 1, email: "admin@email.com", password: "adminadmin")
 
 User.destroy_all
 User.create(id: 1, email: "jansonsiy@email.com", password: "jansonsiy", approved: true, role: "Buyer", credit: 50000)
@@ -21,13 +21,13 @@ Stock.destroy_all
 #   endpoint: 'https://cloud.iexapis.com/v1'
 # )
 msft_stock_price = @client.quote('MSFT').latest_price
-Stock.create(name: 'MSFT', price: msft_stock_price, quantity: 10)
+Stock.create(id: 1, name: 'MSFT', price: msft_stock_price, quantity: 10)
 
 fb_stock_price = @client.quote('FB').latest_price
-Stock.create(name: 'FB', price: fb_stock_price, quantity: 10)
+Stock.create(id: 2, name: 'FB', price: fb_stock_price, quantity: 10)
 
 twtr_stock_price = @client.quote('TWTR').latest_price
-Stock.create(name: 'TWTR', price: twtr_stock_price, quantity: 10)
+Stock.create(id: 3, name: 'TWTR', price: twtr_stock_price, quantity: 10)
 
 Transaction.destroy_all
-Transaction.create(user_id: 1, stock_id: 1, buy: true, sell: true, price: 1, quantity: 1)
+Transaction.create(user_id: 100, stock_id: 100, buy: true, sell: true, price: 100, quantity: 100)

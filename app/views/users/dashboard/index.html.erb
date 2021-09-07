@@ -28,12 +28,12 @@
   </tbody>
 </table>
 
-<h1>Your Stocks</h1>
+<h1>Transaction History</h1>
 <table>
   <th>
     <tr>
-      <td>Name</td>
-      <td>Price</td>
+      <td>Stock Name</td>
+      <td>Stock Price</td>
       <td>Quantity</td>
     </tr>
   </th>
@@ -47,3 +47,10 @@
     <% end %>
   </tbody>
 </table>
+
+<h1>Stocks Owned</h1>
+MSFT: <%= @msft_stocks_owned %>
+<br>
+FB: <%= @fb_stocks_owned %>
+<br>
+TWRT: <%= @twtr_stocks_owned %>

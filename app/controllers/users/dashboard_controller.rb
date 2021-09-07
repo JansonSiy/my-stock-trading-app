@@ -12,7 +12,13 @@ class Users::DashboardController < ApplicationController
     @stocks = Stock.all
 
     @transactions = current_user.transactions.all
-  end 
+
+    @msft_stocks_owned = Transaction.where(user_id:current_user.id, stock_id:1, buy: true).sum(:quantity)
+
+    @fb_stocks_owned = Transaction.where(user_id:current_user.id, stock_id:2, buy: true).sum(:quantity)
+
+    @twtr_stocks_owned = Transaction.where(user_id:current_user.id, stock_id:2, buy: true).sum(:quantity)
+  end
 
   def new
     @transaction = Transaction.new
@@ -30,17 +36,12 @@ class Users::DashboardController < ApplicationController
       stock_id: params[:id],
       stock_name: @stock.name,
       buy: true,
-      sell: true,
+      sell: false,
       price: @stock.price,
       quantity: params[:buy_transaction][:quantity]
       #[:name of form],[:field quantity]
     )
     
-    # working
-    # @user = current_user
-    # @user.credit -= @stock.price
-    # @user.save!
-
     @transaction = current_user.transactions.last.quantity
     @user = current_user
     @user.credit -= (@stock.price * @transaction)
