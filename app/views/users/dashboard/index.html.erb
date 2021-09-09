@@ -4,6 +4,13 @@
 <h2>User: <%= current_user.email %></h2>
 <h2>Credit: <%= current_user.credit %></h2>
 
+<h1>Stocks Owned</h1>
+MSFT: <%= @msft_stocks_owned %>
+<br>
+FB: <%= @fb_stocks_owned %>
+<br>
+TWRT: <%= @twtr_stocks_owned %>
+
 <h1>Stock List</h1>
 <table>
   <th>
@@ -22,7 +29,7 @@
         <td><%= stock.price %></td>
         <td><%= stock.quantity %></td>
         <td><%= link_to 'buy', users_buy_path(stock) %></td>
-        <td><%= link_to 'sell', users_sell_path(stock) %></td>
+        <td><%= link_to 'sell my stock', users_sell_path(stock) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,6 +42,8 @@
       <td>Stock Name</td>
       <td>Stock Price</td>
       <td>Quantity</td>
+      <td>Buy</td>
+      <td>Sell</td>
     </tr>
   </th>
   <tbody>
@@ -43,14 +52,9 @@
         <td><%= transaction.stock_name %></td>
         <td><%= transaction.price %></td>
         <td><%= transaction.quantity %></td>
+        <td><%= transaction.buy %></td>
+        <td><%= transaction.sell %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<h1>Stocks Owned</h1>
-MSFT: <%= @msft_stocks_owned %>
-<br>
-FB: <%= @fb_stocks_owned %>
-<br>
-TWRT: <%= @twtr_stocks_owned %>

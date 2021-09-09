@@ -1,1 +1,12 @@
 <h1>Sell <%= @stock.name %> Stocks</h1>
+
+<%= form_for("sell_transaction", url: "/users/dashboard/#{params[:id]}/sell_transaction", method: "post") do |f| %>
+    <div class="field">
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
