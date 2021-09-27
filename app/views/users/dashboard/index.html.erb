@@ -28,8 +28,8 @@ TWRT: <%= @twtr_stocks_owned %>
         <td><%= stock.name %></td>
         <td><%= stock.price %></td>
         <td><%= stock.quantity %></td>
-        <td><%= link_to 'buy', users_buy_path(stock) %></td>
-        <td><%= link_to 'sell my stock', users_sell_path(stock) %></td>
+        <td><%= link_to 'Buy', users_buy_path(stock) %></td>
+        <td><%= link_to 'Sell', users_sell_path(stock) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,8 +42,7 @@ TWRT: <%= @twtr_stocks_owned %>
       <td>Stock Name</td>
       <td>Stock Price</td>
       <td>Quantity</td>
-      <td>Buy</td>
-      <td>Sell</td>
+      <td>Status</td>
     </tr>
   </th>
   <tbody>
@@ -52,8 +51,12 @@ TWRT: <%= @twtr_stocks_owned %>
         <td><%= transaction.stock_name %></td>
         <td><%= transaction.price %></td>
         <td><%= transaction.quantity %></td>
-        <td><%= transaction.buy %></td>
-        <td><%= transaction.sell %></td>
+        <td><% if transaction.buy == true %>
+              Bought
+            <% else %>
+              Sold
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

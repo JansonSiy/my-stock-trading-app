@@ -15,8 +15,13 @@
         <td><%= user.email %></td>
         <td><%= user.role %></td>
         <td><%= user.credit %></td>
-        <td><%= user.approved %></td>
-        <td><%= link_to "pending", admins_approved_path(user), method: :patch %></td>
+        <td><% if user.approved == true %>
+                Activated
+              <% else %>
+                Pending
+              <% end %>
+        </td>
+        <td><%= link_to "Approve", admins_approved_path(user), method: :patch %></td>
         <%# method: :patch = def update
         methid: :destroy = def destroy %>
       </tr>
