@@ -1,30 +1,90 @@
-<h1>Admins::Dashboard#index</h1>
-<p>Find me in app/views/admins/dashboard/index.html.erb</p>
-
-<table>
-  <th>
-    <tr>
-      <td>id no.</td>
-      <td>email</td>
-    </tr>
-  </th>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td><%= user.credit %></td>
-        <td><% if user.approved == true %>
-                Activated
-              <% else %>
-                Pending
+<div class="container">
+<h1 class="adminDashboard">ADMIN DASHBOARD</h1>
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr class="bg-indigo-500" >
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                USERS
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                EMAIL
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                ROLE
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                CREDIT
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                STATUS
+              </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                Approval
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+          <% @users.each do |user| %>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="/user.png" alt="">
+                  </div>
+                  
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      Account Number: <%= user.id %>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      <%= user.email %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <%= user.email %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <% if user.role == "Broker" %>
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-600 text-gray-200">
+                    <%= user.role %>
+                  </span>
+                <% else %>
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-400 text-gray-100">
+                    <%= user.role %>
+                  </span>
+                <% end %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <%= user.credit %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <% if user.approved == true %>
+                <span class="text-green-500">Activated</span>
+                <% else %>
+                <span class="text-red-500">Pending</span>
               <% end %>
-        </td>
-        <td><%= link_to "Approve", admins_approved_path(user), method: :patch %></td>
-        <%# method: :patch = def update
-        methid: :destroy = def destroy %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-indigo-500">
+                <%= link_to "Confirm", admins_approved_path(user), method: :patch %>
+              </td>
+            </tr>
+            <% end %>
+            <!-- More people... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="goBack">
+<p class="gobacktext"><%= link_to "Go back", welcome_index_path %> 
+</p>
+</div>
+</div>

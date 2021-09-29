@@ -2,22 +2,22 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
     <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-      Log In your User Account
+      Log In your Admin Account
     </h2>
     <p class="mt-2 text-center text-sm text-gray-600">
     </p>
   </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= render "users/shared/error_messages", resource: resource %>
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">
-            <%= f.label :email %>
-          </label>
+  <%= render "users/shared/error_messages", resource: resource %>
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <form class="space-y-6" action="#" method="POST">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">
+              <%= f.label :email %>
+            </label>
           <div class="mt-1">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm", id:"email", placeholder:"jansonsiy@email.com" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm", id:"email", placeholder:"admin@email.com" %>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
             <% end %>
           </label>
           <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "current-password", class:"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm", id:"password", placeholder:"jansonsiy" %>
+            <%= f.password_field :password, autocomplete: "current-password", class:"appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm", id:"password", placeholder:"adminadmin" %>
             </div>
         </div>
         
@@ -43,7 +43,7 @@
 
           <div class="text-sm">
             <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-              <%= link_to "Forgot your password?", new_user_password_path, class:"fontColor" %> 
+              <%= link_to "Forgot your password?", new_admin_password_path, class:"fontColor" %> 
             </a>
           </div>
         </div>
@@ -63,10 +63,9 @@
             <span class="px-2 bg-white text-gray-500">
               <%= link_to "User Sign Up", new_user_registration_path, class:"fontColor" %>
               |
-              <%= link_to "Admin Sign Up", new_admin_registration_path, class:"fontColor" %>
+              <%= link_to "User Log In", new_user_session_path, class:"fontColor" %>
               |
-              <%= link_to "Admin Log In", new_admin_session_path, class:"fontColor" %>
-
+              <%= link_to "Admin Sign Up", new_admin_registration_path, class:"fontColor" %>
             </span>
           </div>
         </div>

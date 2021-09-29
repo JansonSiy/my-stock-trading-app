@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyStockTradingApp</title>
+    <title>Strad Trading App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
   </head>
 
   <body>
-   
-    <br>
-
-    <% if user_signed_in? %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <% elsif !admin_signed_in? %>
-      <%= link_to "Sign In", new_user_session_path %>
-    <% end %>
-
-    <% if admin_signed_in? %>
-      <%= link_to 'Sign Out as Admin', destroy_admin_session_path, method: :delete %>
-    <% elsif !user_signed_in? %>
-      <%= link_to "Sign In as Admin", new_admin_session_path %>
-    <% end %>
-
     <%= yield %>
   </body>
 </html>

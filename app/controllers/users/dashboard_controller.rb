@@ -12,10 +12,34 @@ class Users::DashboardController < ApplicationController
 
     @stocks = Stock.all
 
-    # looping through the transactions and getting the needed data in index
-    @transactions = current_user.transactions.all
+    # # looping through the transactions and getting the needed data in index
+    # @transactions = current_user.transactions.all
 
     # getting the sum of the current user's per stock quantity
+    @msft_stocks_owned = get_sum(current_user, Stock.find(1))
+    @fb_stocks_owned = get_sum(current_user, Stock.find(2))
+    @twtr_stocks_owned = get_sum(current_user, Stock.find(3))
+  end
+
+  def stockslist
+    # pulling of API data
+    client = Stock.iex
+
+    # query the database then update the stock prices
+    Stock.all.each do |stock|
+      stock.update!(price: client.quote(stock.name).latest_price)
+    end
+
+    @stocks = Stock.all
+
+    @msft_stocks_owned = get_sum(current_user, Stock.find(1))
+    @fb_stocks_owned = get_sum(current_user, Stock.find(2))
+    @twtr_stocks_owned = get_sum(current_user, Stock.find(3))
+  end
+
+  def transactions
+    @transactions = current_user.transactions.all
+    
     @msft_stocks_owned = get_sum(current_user, Stock.find(1))
     @fb_stocks_owned = get_sum(current_user, Stock.find(2))
     @twtr_stocks_owned = get_sum(current_user, Stock.find(3))
